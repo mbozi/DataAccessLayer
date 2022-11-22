@@ -2,18 +2,16 @@
 
 namespace DAL.Model;
 
-public class Server : BaseDBSchema
+public class Application : BaseDBSchema
 {
 
-
-    public Server(SqlDataReader rdr) : base(rdr)
+    public Application(SqlDataReader rdr) : base(rdr)
     {
         ID = rdr.GetInt32(0);
         Name = rdr.GetString(1);
         Description = rdr.GetString(2);
         DateModified = rdr.GetDateTime(3);
         DateCreated = rdr.GetDateTime(4);
-        IsDeleted = rdr.GetChar(5).ToString();
+        IsDeleted = rdr.GetValue(5).ToString() ?? "0";
     }
-    public ServerRole Role { get; set; } = null!;
 }
